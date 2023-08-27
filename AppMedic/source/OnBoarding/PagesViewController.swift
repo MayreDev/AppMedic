@@ -1,11 +1,10 @@
 import UIKit
 
 class PagesViewController: UIPageViewController {
-
+    
     var pages = [UIViewController]()
     let pageControl = UIPageControl()
     private var skipButton = UIButton(type: .system)
-    
     private let viewDataSource: PagesViewDataSource?
     private let viewDelegate: PagesViewDelegate?
     
@@ -26,7 +25,6 @@ class PagesViewController: UIPageViewController {
         super.viewDidLoad()
         dataSource = viewDataSource
         delegate = viewDelegate
-        view.backgroundColor = .blue
         configureSkipButton()
         SetViewC()
         configurePageControl()
@@ -41,18 +39,15 @@ class PagesViewController: UIPageViewController {
     }
     
     @objc func nextMenu(){
-        
-        
         let nextMenu = HomeViewController()
         self.navigationController?.pushViewController(nextMenu, animated: true)
     }
     
     func SetViewC(){
         let firstPage = InitViewController( Imagen: PagesConstants.firstPage.image, Text: PagesConstants.firstPage.text, Description: PagesConstants.firstPage.description)
-        
         let secondPage = InitViewController(Imagen: PagesConstants.secondPage.image, Text: PagesConstants.secondPage.text, Description: PagesConstants.secondPage.description)
-        
         let thirdPage = InitViewController(Imagen: PagesConstants.thirdPage.image, Text: PagesConstants.thirdPage.text, Description: PagesConstants.thirdPage.description)
+        
         pages = [firstPage, secondPage, thirdPage]
         setViewControllers([pages[0]], direction: .forward, animated: false)
     }
