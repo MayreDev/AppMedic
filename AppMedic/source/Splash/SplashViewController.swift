@@ -26,7 +26,9 @@ class SplashViewController: UIViewController {
     
     private func configureTimerSplash(){
         timerSplash = Timer.scheduledTimer(withTimeInterval: SplashViewConstants.image.timer, repeats: false) { _ in
-                let viewController  = TabBarViewController()
+
+           
+                let viewController  = PagesViewController(viewDataSource: PagesViewDataSource(), viewDelegate: PagesViewDelegate())
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
